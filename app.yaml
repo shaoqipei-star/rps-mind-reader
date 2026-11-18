@@ -1,0 +1,6 @@
+name: RPS Mind Reader
+icon: ✊
+description: 讀心猜拳 AI — 用 Mac 鏡頭跟 UNO Q 猜拳，板子會學你的出拳習慣來贏你。
+
+bricks:
+  - arduino:web_ui

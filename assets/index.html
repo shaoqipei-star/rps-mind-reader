@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>讀心猜拳 AI · UNO Q</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>讀心猜拳 AI <span class="tag">UNO Q Edge AI</span></h1>
+    <div id="status" class="status">連線中…</div>
+  </header>
+
+  <main>
+    <section class="arena">
+      <div class="side">
+        <h2>你</h2>
+        <div class="cam">
+          <video id="video" autoplay playsinline muted></video>
+          <canvas id="overlay"></canvas>
+          <div id="countdown" class="countdown"></div>
+        </div>
+        <div class="live">即時辨識：<b id="live-gesture">—</b> <br><small id="live-ms"></small> · <small id="board-us"></small></div>
+        <div class="manual">
+          <span>沒有鏡頭？用按鈕出拳：</span>
+          <button data-move="rock">✊ 石頭 (1)</button>
+          <button data-move="scissors">✌️ 剪刀 (2)</button>
+          <button data-move="paper">🖐 布 (3)</button>
+        </div>
+      </div>
+
+      <div class="vs">
+        <div class="score"><span id="s-player">0</span> : <span id="s-ai">0</span></div>
+        <div class="score-label">你 : UNO Q（平手 <span id="s-draw">0</span>）</div>
+        <button id="start" class="big">開始一局（空白鍵）</button>
+        <button id="reset" class="small">重新開始</button>
+        <div id="result" class="result"></div>
+      </div>
+
+      <div class="side">
+        <h2>UNO Q</h2>
+        <div class="board-move" id="ai-move">🤖</div>
+        <div class="mind">
+          <div>AI 預測你會出：<b id="pred">—</b></div>
+          <div>信心：<b id="prob">—</b>　方法：<b id="method">—</b></div>
+          <div>猜中率：<b id="hit-rate">—</b>　AI 勝率：<b id="ai-rate">—</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="history">
+      <h3>對戰紀錄（最近 20 局）</h3>
+      <div id="history"></div>
+    </section>
+  </main>
+
+  <script src="libs/socket.io.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
